@@ -21,20 +21,86 @@ export default function Home() {
                   <p className={styles.slogan}>"{championship.slogan}"</p>
                 )}
                 
+                {championship.seriesTitle && (
+                  <div className={styles.seriesInfo}>
+                    <p className={styles.seriesTitle}>{championship.seriesTitle}</p>
+                    {championship.sponsor && (
+                      <p className={styles.sponsor}>스폰서: {championship.sponsor}</p>
+                    )}
+                  </div>
+                )}
+
+                {championship.summary && (
+                  <div className={styles.summary}>
+                    <p>{championship.summary}</p>
+                  </div>
+                )}
+
                 {championship.games && championship.games.length > 0 && (
                   <div className={styles.games}>
                     <h3 className={styles.gamesTitle}>경기 결과</h3>
                     <div className={styles.gamesList}>
                       {championship.games.map((game, idx) => (
                         <div key={idx} className={styles.gameItem}>
-                          <span className={styles.gameNumber}>경기 {game.game}</span>
-                          <span className={styles.gameScore}>{game.score}</span>
-                          <span className={`${styles.gameResult} ${game.result === '승' ? styles.win : styles.loss}`}>
-                            {game.result}
-                          </span>
-                          <span className={styles.gameVenue}>{game.venue}</span>
+                          <div className={styles.gameHeader}>
+                            <span className={styles.gameNumber}>경기 {game.game}</span>
+                            {game.date && <span className={styles.gameDate}>{game.date}</span>}
+                            <span className={`${styles.gameResult} ${game.result === '승' ? styles.win : styles.loss}`}>
+                              {game.result}
+                            </span>
+                          </div>
+                          <div className={styles.gameScore}>{game.score}</div>
+                          <div className={styles.gameDetails}>
+                            <div className={styles.gameVenue}>📍 {game.venue}</div>
+                            {game.winningPitcher && (
+                              <div className={styles.gamePitcher}>승리투수: {game.winningPitcher}</div>
+                            )}
+                            {game.save && (
+                              <div className={styles.gameSave}>세이브: {game.save}</div>
+                            )}
+                            {game.homeRun && game.homeRun.length > 0 && (
+                              <div className={styles.gameHomeRun}>
+                                홈런: {game.homeRun.join(', ')}
+                              </div>
+                            )}
+                            {game.notes && (
+                              <div className={styles.gameNotes}>{game.notes}</div>
+                            )}
+                          </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {championship.statistics && (
+                  <div className={styles.statistics}>
+                    <h3 className={styles.statisticsTitle}>시리즈 통계</h3>
+                    <div className={styles.statisticsGrid}>
+                      {championship.statistics.teamBattingAvg && (
+                        <div className={styles.statItem}>
+                          <span className={styles.statLabel}>팀 타율</span>
+                          <span className={styles.statValue}>{championship.statistics.teamBattingAvg}</span>
+                        </div>
+                      )}
+                      {championship.statistics.teamEra && (
+                        <div className={styles.statItem}>
+                          <span className={styles.statLabel}>팀 평균자책점</span>
+                          <span className={styles.statValue}>{championship.statistics.teamEra}</span>
+                        </div>
+                      )}
+                      {championship.statistics.totalRuns && (
+                        <div className={styles.statItem}>
+                          <span className={styles.statLabel}>총 득점</span>
+                          <span className={styles.statValue}>{championship.statistics.totalRuns}점</span>
+                        </div>
+                      )}
+                      {championship.statistics.totalHits && (
+                        <div className={styles.statItem}>
+                          <span className={styles.statLabel}>총 안타</span>
+                          <span className={styles.statValue}>{championship.statistics.totalHits}개</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
