@@ -69,6 +69,138 @@
   font-style: italic;
 }
 
+.games {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.gamesTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.gamesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gameItem {
+  display: grid;
+  grid-template-columns: 60px 1fr 50px 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  align-items: center;
+}
+
+.gameNumber {
+  font-weight: 600;
+  color: #666;
+}
+
+.gameScore {
+  color: #333;
+  font-weight: 500;
+}
+
+.gameResult {
+  font-weight: bold;
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.gameResult.win {
+  background: #c41e3a;
+  color: #fff;
+}
+
+.gameResult.loss {
+  background: #666;
+  color: #fff;
+}
+
+.gameVenue {
+  font-size: 0.85rem;
+  color: #888;
+  text-align: right;
+}
+
+.highlights {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.highlightsTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.highlightsList li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.highlightsList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #c41e3a;
+  font-weight: bold;
+}
+
+.keyPlayers {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.keyPlayersTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.keyPlayersList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.playerTag {
+  padding: 0.4rem 0.8rem;
+  background: #f0f0f0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
@@ -76,6 +208,18 @@
   
   .championships {
     grid-template-columns: 1fr;
+  }
+
+  .gameItem {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .gameNumber,
+  .gameScore,
+  .gameResult,
+  .gameVenue {
+    text-align: left;
   }
 }
 
